@@ -170,31 +170,31 @@ Every architectural choice is grounded in seven systematic benchmarks. See [`TEC
 
 ### Chat Interface — main application view
 
-![Chat Interface](benchmark_imports_for_QandA_notebook/ui_screenshot_chat_interface.png)
+![Chat Interface](benchmark_imports_for_QandA_notebook/01_chat_interface.jpeg)
 
 The main UI showing a question answered with retrieved passages, timestamps, live cost tracking, and top-3 passage ranking.
 
 ### Benchmark Results — Sweet-Spot Recommendations
 
-![Benchmark Recommendations](benchmark_imports_for_QandA_notebook/ui_screenshot_benchmark_recommendations.png)
+![Benchmark Recommendations](benchmark_imports_for_QandA_notebook/02_benchmark_recommendations.jpeg)
 
 Configuration recommendations for different user profiles based on systematic Whisper × LLM benchmarking.
 
 ### Ground-Truth Evaluation
 
-![Judgement Day](benchmark_imports_for_QandA_notebook/ui_screenshot_judgement_day.png)
+![Judgement Day](benchmark_imports_for_QandA_notebook/03_judgement_day_eval.jpeg)
 
 WER (Word Error Rate) and LLM-as-Judge faithfulness evaluation against official YouTube captions.
 
 ### RAG vs. No-RAG (Benchmark 5)
 
-![RAG vs No-RAG](benchmark_imports_for_QandA_notebook/benchmark5_rag_vs_norag_overview.png)
+![RAG vs No-RAG](benchmark_imports_for_QandA_notebook/04_rag_vs_no_rag.jpeg)
 
 Empirical demonstration that retrieval-augmented generation lifts answer accuracy substantially over no-RAG baselines.
 
 ### LLM Comparison (Benchmark 4)
 
-![LLM Comparison](benchmark_imports_for_QandA_notebook/benchmark4_llms_overview.png)
+![LLM Comparison](benchmark_imports_for_QandA_notebook/05_llm_comparison.jpeg)
 
 Side-by-side comparison of GPT-5, GPT-5-mini, GPT-4o-mini, Qwen-2.5-72B, and Llama-3.3 across answer quality, latency, and cost.
 
