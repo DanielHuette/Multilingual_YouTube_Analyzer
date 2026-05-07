@@ -1,0 +1,193 @@
+{
+  "benchmarks_run": [
+    "B1_whisper_sizes",
+    "B3_embeddings",
+    "B4_llms",
+    "B6_chunk_grid",
+    "B7_full_matrix"
+  ],
+  "key_insights": {
+    "best_whisper": {
+      "model": "whisper-1 (API)",
+      "wer": 2.38,
+      "cost": 0.2538
+    },
+    "best_embedding": {
+      "model": "text-embedding-3-small (Small)",
+      "mrr": 1.0
+    },
+    "best_llm": {
+      "model": "gpt-5",
+      "score": 5.0,
+      "cost": 0.03752
+    },
+    "best_chunk_overall": {
+      "chunk_size": 100,
+      "overlap": 15,
+      "mrr": 1.0,
+      "video": "medium_video",
+      "whisper": "api"
+    },
+    "chunk_recommendations": {
+      "api": {
+        "short_video": {
+          "chunk_size": 200,
+          "overlap": 35,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.77
+        },
+        "medium_video": {
+          "chunk_size": 100,
+          "overlap": 15,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.95
+        },
+        "long_video": {
+          "chunk_size": 400,
+          "overlap": 75,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.808
+        }
+      },
+      "tiny": {
+        "short_video": {
+          "chunk_size": 150,
+          "overlap": 25,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.825
+        },
+        "medium_video": {
+          "chunk_size": 75,
+          "overlap": 12,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.9
+        },
+        "long_video": {
+          "chunk_size": 400,
+          "overlap": 75,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.858
+        }
+      },
+      "base": {
+        "short_video": {
+          "chunk_size": 150,
+          "overlap": 25,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.775
+        },
+        "medium_video": {
+          "chunk_size": 50,
+          "overlap": 8,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 1.0
+        },
+        "long_video": {
+          "chunk_size": 400,
+          "overlap": 75,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.808
+        }
+      },
+      "small": {
+        "short_video": {
+          "chunk_size": 150,
+          "overlap": 25,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.775
+        },
+        "medium_video": {
+          "chunk_size": 50,
+          "overlap": 8,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 1.0
+        },
+        "long_video": {
+          "chunk_size": 400,
+          "overlap": 75,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.85
+        }
+      },
+      "medium": {
+        "short_video": {
+          "chunk_size": 150,
+          "overlap": 25,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.77
+        },
+        "medium_video": {
+          "chunk_size": 100,
+          "overlap": 15,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.933
+        },
+        "long_video": {
+          "chunk_size": 800,
+          "overlap": 150,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.9
+        }
+      },
+      "large-v3": {
+        "short_video": {
+          "chunk_size": 150,
+          "overlap": 25,
+          "mrr": 0.95,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.82
+        },
+        "medium_video": {
+          "chunk_size": 50,
+          "overlap": 8,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 1.0
+        },
+        "long_video": {
+          "chunk_size": 1500,
+          "overlap": 250,
+          "mrr": 1.0,
+          "hit_rate_at_5": 1.0,
+          "rrf_mrr": 0.77
+        }
+      },
+      "_buckets": {
+        "short_video": {
+          "min_sec": 0,
+          "max_sec": 600
+        },
+        "medium_video": {
+          "min_sec": 600,
+          "max_sec": 2400
+        },
+        "long_video": {
+          "min_sec": 2400,
+          "max_sec": 999999
+        }
+      }
+    },
+    "best_combo": {
+      "whisper": "local: tiny",
+      "llm": "hf:qwen2.5-72b",
+      "score": 5.0,
+      "cost": 0.00267
+    },
+    "full_matrix_total_cost_usd": 0.9601
+  }
+}

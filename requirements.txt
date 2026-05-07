@@ -1,0 +1,54 @@
+# Multilingual YouTube Analyzer — Python Dependencies
+# Install via: pip install -r requirements.txt
+#
+# Note: When running in Google Colab, dependencies are installed
+# automatically by the first cell of each notebook.
+# This file is provided for local development and reproducibility.
+
+# LangChain ecosystem
+langchain>=0.3
+langchain-core>=0.3
+langchain-openai
+langchain-chroma
+langchain-text-splitters
+langchain-community
+langchain-huggingface
+langgraph
+langsmith
+
+# Vector store
+chromadb
+
+# OpenAI
+openai
+openai-whisper
+tiktoken
+
+# Audio / Video
+yt-dlp
+
+# YouTube captions
+youtube-transcript-api
+
+# UI
+gradio
+
+# Utilities
+pydantic
+tenacity
+python-dotenv
+requests
+
+# NLP / Embeddings
+huggingface-hub
+sentence-transformers
+
+# Evaluation
+jiwer
+
+# Data / Visualisation (benchmark notebook)
+pandas
+matplotlib
+seaborn
+numpy
+torch
