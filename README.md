@@ -237,4 +237,4 @@ See [`LICENSE`](LICENSE).
 
 ## Contact
 
-Daniel Hütte — [LinkedIn](https://www.linkedin.com/in/daniel-h%C3%BCtte-183a073aa/) — [GitHub](https://github.com/DanielHuette)
+Daniel Hütte — [LinkedIn](https://www.linkedin.com/in/danielhuette/) — [GitHub](https://github.com/DanielHuette)
