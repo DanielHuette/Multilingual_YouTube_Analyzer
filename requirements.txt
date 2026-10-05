@@ -31,7 +31,7 @@ yt-dlp
 youtube-transcript-api
 
 # UI
-gradio
+gradio>=5.0,<6
 
 # Utilities
 pydantic
