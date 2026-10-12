@@ -7,6 +7,9 @@ A production-grade, data-driven Retrieval-Augmented Generation (RAG) system for 
 [![Open Q&A Notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DanielHuette/Multilingual_YouTube_Analyzer/blob/main/Multilingual_YouTube_Analyzer.ipynb)
 [![Open Benchmark Notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DanielHuette/Multilingual_YouTube_Analyzer/blob/main/benchmark.ipynb)
 
+Project page with every answer of the live run and the benchmark tables:
+**[youtubeanalyzer.speedofthespirit.dev](https://youtubeanalyzer.speedofthespirit.dev)**
+
 ---
 
 ## What this project does
@@ -163,6 +166,41 @@ Every architectural choice is grounded in seven systematic benchmarks. See [`TEC
 | Start-up | `local: small` | `gpt-4o-mini` or Llama | ≈ $0.001 |
 | Mid-size Company | `api (whisper-1)` | `gpt-5-mini` | ≈ $0.01–0.05 |
 | Enterprise | `api (whisper-1)` | `gpt-5-mini` or higher | ≈ $0.05+ |
+
+---
+
+## Live run (October 2026)
+
+`live_eval/run_live_eval.py` drives the Q&A notebook end to end, without the UI: it executes
+the notebook's own code cells, ingests four videos with the Whisper API, lets the notebook
+generate eight questions per video from the YouTube captions, adds hand-written questions
+(German questions to English videos, an English question to a German video, one question
+whose answer is not in the video), and judges every answer against the captions with the
+notebook's LLM-as-judge.
+
+| | |
+|---|---|
+| Videos | 4 (three English, one German; 5 to 17 minutes) |
+| Questions | 37 |
+| Judged fully supported | 37 of 37 |
+| Mean answer time | 2.7 s |
+| Agent cost for all answers | $0.065 (gpt-4o-mini) |
+| Whisper cost for all four videos | $0.23 |
+| Word error rate, German video vs. fresh YouTube captions | 5.4 % |
+
+Every question, answer and verdict is in `live_eval/results.json` and on the project page.
+What the figures do not show: the judge is the same model that answers, so full marks mean
+"covered by the captions", not "checked by a person"; and YouTube refuses downloads from
+cloud servers, so the German audio was fetched beforehand with yt-dlp over a home
+connection and placed in `live_eval/audio/`, exactly as the notebook's error message asks.
+
+```bash
+pip install -r requirements.txt
+OPENAI_API_KEY=... python live_eval/run_live_eval.py --fresh
+```
+
+The page itself lives in `web/` and is built from `live_eval/results.json` and
+`benchmark_imports_for_QandA_notebook/all_benchmarks.json`.
 
 ---
 
