@@ -1,0 +1,298 @@
+{
+  "_meta": {
+    "description": "Chunk recommendations per whisper model x video duration bucket. Use duration_sec to find the bucket, then look up your whisper model key.",
+    "how_to_use": "1) Compute video duration in seconds. 2) Find matching bucket via _buckets. 3) Look up whisper_model -> chunk_size, overlap. 4) Use recommended_llm for best answer quality.",
+    "source_benchmarks": [
+      "B1_whisper_sizes",
+      "B4_llms",
+      "B5_rag_vs_norag",
+      "B6_chunk_grid",
+      "B7_full_matrix"
+    ],
+    "whisper_model_key_map": {
+      "whisper-tiny": "tiny",
+      "whisper-base": "base",
+      "whisper-small": "small",
+      "whisper-medium": "medium",
+      "whisper-large-v3": "large-v3",
+      "whisper-1": "api"
+    },
+    "llm_quality_ranking": [
+      {
+        "model": "gpt-4o-mini",
+        "avg_score_with_rag": 5.0,
+        "cost_per_10q_usd": 0.0015,
+        "latency_sec": 1.31,
+        "tier": "best_value"
+      },
+      {
+        "model": "gpt-5-mini",
+        "avg_score_with_rag": 5.0,
+        "cost_per_10q_usd": 0.0063,
+        "latency_sec": 4.34,
+        "tier": "premium"
+      },
+      {
+        "model": "gpt-5",
+        "avg_score_with_rag": 5.0,
+        "cost_per_10q_usd": 0.0375,
+        "latency_sec": 4.06,
+        "tier": "top"
+      },
+      {
+        "model": "hf:qwen2.5-72b",
+        "avg_score_with_rag": 5.0,
+        "cost_per_10q_usd": 0.0,
+        "latency_sec": 3.09,
+        "tier": "free"
+      },
+      {
+        "model": "hf:llama-3.3",
+        "avg_score_with_rag": 5.0,
+        "cost_per_10q_usd": 0.0,
+        "latency_sec": 0.8,
+        "tier": "free_fastest"
+      }
+    ],
+    "note_on_b7_scores": "Benchmark 7 LLM scores appear low (1.9-3.3) because it tested on a short video WITHOUT optimized chunk settings. With RAG enabled (B5) all models reach score 5.0. Always use RAG=True.",
+    "rag_impact": "B5 shows RAG boosts accuracy from 70-80% to 100% for both gpt-5-mini and gpt-4o-mini. RAG must always be enabled."
+  },
+  "_buckets": {
+    "short_video": {
+      "min_sec": 0,
+      "max_sec": 600,
+      "label": "short (~0-10 min)"
+    },
+    "medium_video": {
+      "min_sec": 600,
+      "max_sec": 2400,
+      "label": "medium (~10-40 min)"
+    },
+    "long_video": {
+      "min_sec": 2400,
+      "max_sec": 999999,
+      "label": "long (40+ min)"
+    }
+  },
+  "_whisper_wer_reference": {
+    "tiny": {
+      "wer_long": 3.07,
+      "wer_medium": 14.41,
+      "wer_short": 11.09,
+      "type": "open-source"
+    },
+    "base": {
+      "wer_long": 2.52,
+      "wer_medium": 10.64,
+      "wer_short": 7.5,
+      "type": "open-source"
+    },
+    "small": {
+      "wer_long": 2.4,
+      "wer_medium": 9.65,
+      "wer_short": 6.85,
+      "type": "open-source"
+    },
+    "medium": {
+      "wer_long": 3.31,
+      "wer_medium": 8.92,
+      "wer_short": 5.06,
+      "type": "open-source"
+    },
+    "large-v3": {
+      "wer_long": 16.44,
+      "wer_medium": 17.61,
+      "wer_short": 17.62,
+      "type": "open-source",
+      "warning": "Unexpectedly high WER \u2014 not recommended for production"
+    },
+    "api": {
+      "wer_long": 2.38,
+      "wer_medium": 9.52,
+      "wer_short": 4.89,
+      "type": "openai-api",
+      "note": "Best overall WER, especially on long video"
+    }
+  },
+  "api": {
+    "short_video": {
+      "chunk_size": 200,
+      "overlap": 35,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.77,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "medium_video": {
+      "chunk_size": 100,
+      "overlap": 15,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.95,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "long_video": {
+      "chunk_size": 400,
+      "overlap": 75,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.808,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    }
+  },
+  "tiny": {
+    "short_video": {
+      "chunk_size": 150,
+      "overlap": 25,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.825,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "medium_video": {
+      "chunk_size": 75,
+      "overlap": 12,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.9,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "long_video": {
+      "chunk_size": 400,
+      "overlap": 75,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.858,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    }
+  },
+  "base": {
+    "short_video": {
+      "chunk_size": 150,
+      "overlap": 25,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.775,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "medium_video": {
+      "chunk_size": 50,
+      "overlap": 8,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 1.0,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "long_video": {
+      "chunk_size": 400,
+      "overlap": 75,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.808,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    }
+  },
+  "small": {
+    "short_video": {
+      "chunk_size": 150,
+      "overlap": 25,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.775,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "medium_video": {
+      "chunk_size": 50,
+      "overlap": 8,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 1.0,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "long_video": {
+      "chunk_size": 400,
+      "overlap": 75,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.85,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    }
+  },
+  "medium": {
+    "short_video": {
+      "chunk_size": 150,
+      "overlap": 25,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.77,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "medium_video": {
+      "chunk_size": 100,
+      "overlap": 15,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.933,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    },
+    "long_video": {
+      "chunk_size": 800,
+      "overlap": 150,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.9,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3"
+    }
+  },
+  "large-v3": {
+    "short_video": {
+      "chunk_size": 150,
+      "overlap": 25,
+      "mrr": 0.95,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.82,
+      "recommended_llm": "gpt-4o-mini",
+      "fallback_llm": "hf:llama-3.3",
+      "warning": "High WER (~17%) may degrade answer quality despite good retrieval scores"
+    },
+    "medium_video": {
+      "chunk_size": 50,
+      "overlap": 8,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 1.0,
+      "recommended_llm": "gpt-5-mini",
+      "fallback_llm": "gpt-4o-mini",
+      "warning": "High WER \u2014 stronger LLM recommended to compensate for transcription errors"
+    },
+    "long_video": {
+      "chunk_size": 1500,
+      "overlap": 250,
+      "mrr": 1.0,
+      "hit_rate": 1.0,
+      "rrf_mrr": 0.77,
+      "recommended_llm": "gpt-5-mini",
+      "fallback_llm": "gpt-4o-mini",
+      "warning": "High WER \u2014 stronger LLM recommended to compensate for transcription errors"
+    }
+  },
+  "_usage_example": {
+    "description": "Paste this helper into your notebook to auto-select chunk config from duration + whisper model",
+    "python_snippet": "import json\n\nwith open('chunk_recommendations.json') as f:\n    CHUNK_REC = json.load(f)\n\ndef get_chunk_config(duration_sec: int, whisper_key: str) -> dict:\n    \"\"\"\n    Returns optimal chunk_size, overlap and recommended_llm.\n    whisper_key: one of 'tiny','base','small','medium','large-v3','api'\n    \"\"\"\n    for bucket, b in CHUNK_REC['_buckets'].items():\n        if b['min_sec'] <= duration_sec < b['max_sec']:\n            return CHUNK_REC[whisper_key][bucket]\n    return CHUNK_REC[whisper_key]['long_video']  # safety fallback\n\n# --- Example: 5-min video (~300s), whisper-small ---\ncfg = get_chunk_config(300, 'small')\n# cfg = {'chunk_size': 150, 'overlap': 25, 'mrr': 0.95, 'recommended_llm': 'gpt-4o-mini', ...}\nprint(cfg['chunk_size'], cfg['overlap'], cfg['recommended_llm'])"
+  }
+}

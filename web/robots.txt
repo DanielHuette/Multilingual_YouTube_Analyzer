@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://youtubeanalyzer.speedofthespirit.dev/sitemap.xml

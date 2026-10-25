@@ -1,0 +1,35 @@
+{
+  "cheapest": {
+    "whisper": "local: tiny",
+    "llm": "hf:llama-3.3",
+    "total_cost_usd": 0.002,
+    "judge_score": 1.9,
+    "judge_thumbs": "down",
+    "note": "Lowest total cost"
+  },
+  "fastest": {
+    "whisper": "local: tiny",
+    "llm": "hf:llama-3.3",
+    "total_cost_usd": 0.002,
+    "judge_score": 1.9,
+    "judge_thumbs": "down",
+    "note": "Fastest transcription + answer"
+  },
+  "business_sweet_spot": {
+    "whisper": "local: tiny",
+    "llm": "hf:llama-3.3",
+    "total_cost_usd": 0.00264,
+    "judge_score": 4.9,
+    "judge_thumbs": "up",
+    "note": "Cheapest combo with score \u2265 3.5",
+    "threshold": 3.5
+  },
+  "free_tier_hero": {
+    "note": "No fully free combination found"
+  },
+  "_meta": {
+    "judge_model": "gpt-4o-mini",
+    "sweet_spot_threshold": 3.5,
+    "total_combinations": 90
+  }
+}

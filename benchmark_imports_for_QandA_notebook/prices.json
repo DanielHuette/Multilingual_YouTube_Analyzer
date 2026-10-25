@@ -1,0 +1,93 @@
+{
+  "llm_models": {
+    "gpt-5": {
+      "input": 1.25,
+      "output": 10.0,
+      "type": "openai"
+    },
+    "gpt-5-mini": {
+      "input": 0.25,
+      "output": 2.0,
+      "type": "openai"
+    },
+    "gpt-5-nano": {
+      "input": 0.05,
+      "output": 0.4,
+      "type": "openai"
+    },
+    "gpt-4o-mini": {
+      "input": 0.15,
+      "output": 0.6,
+      "type": "openai"
+    },
+    "hf:qwen2.5-72b": {
+      "input": 0.0,
+      "output": 0.0,
+      "type": "huggingface",
+      "note": "Gut aber langsam \u2014 ~10-15s pro Call"
+    },
+    "hf:llama-3.3": {
+      "input": 0.0,
+      "output": 0.0,
+      "type": "huggingface",
+      "note": "Mittel aber schneller \u2014 ~3-6s pro Call"
+    }
+  },
+  "whisper_models": {
+    "api (whisper-1)": {
+      "cost_per_minute_usd": 0.006,
+      "type": "api"
+    },
+    "local: tiny": {
+      "cost_per_run_usd": 0.00161,
+      "cost_per_minute_usd": 9.31533269045323e-05,
+      "type": "local",
+      "wer_percent": 3.07,
+      "total_time_sec": 58.13
+    },
+    "local: base": {
+      "cost_per_run_usd": 0.00217,
+      "cost_per_minute_usd": 0.00012555448408871743,
+      "type": "local",
+      "wer_percent": 2.52,
+      "total_time_sec": 78.17
+    },
+    "local: small": {
+      "cost_per_run_usd": 0.00414,
+      "cost_per_minute_usd": 0.00023953712632594017,
+      "type": "local",
+      "wer_percent": 2.4,
+      "total_time_sec": 148.91
+    },
+    "local: medium": {
+      "cost_per_run_usd": 0.00858,
+      "cost_per_minute_usd": 0.0004964320154291225,
+      "type": "local",
+      "wer_percent": 3.31,
+      "total_time_sec": 309.05
+    },
+    "local: large-v3": {
+      "cost_per_run_usd": 0.0193,
+      "cost_per_minute_usd": 0.001116682738669238,
+      "type": "local",
+      "wer_percent": 16.44,
+      "total_time_sec": 694.82
+    }
+  },
+  "embedding_models": {
+    "text-embedding-3-small": {
+      "cost_per_1m_tokens_usd": 0.02,
+      "type": "openai"
+    },
+    "text-embedding-3-large": {
+      "cost_per_1m_tokens_usd": 0.13,
+      "type": "openai"
+    }
+  },
+  "meta": {
+    "whisper_api_cost_per_minute": 0.006,
+    "benchmark_audio_duration_sec": 1037,
+    "judge_model": "gpt-4o-mini",
+    "sweet_spot_threshold": 3.5
+  }
+}

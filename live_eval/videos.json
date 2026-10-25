@@ -1,0 +1,31 @@
+[
+  {
+    "url": "https://www.youtube.com/watch?v=l-rBd0F6d9E",
+    "label": "English, 5 minutes (benchmark video)",
+    "extra_questions": [
+      "Fasse die Kernaussage des Videos in zwei Sätzen auf Deutsch zusammen.",
+      "What does the video say about investing in the stock market?"
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=ubjW4aq_MAg",
+    "label": "English, 17 minutes (benchmark video)",
+    "extra_questions": [
+      "Welche konkreten Fragen soll man sich laut Video stellen, um ins Handeln zu kommen? Antworte auf Deutsch."
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=CYvjC94jDu4",
+    "label": "English, 5 minutes (smoke-test video)",
+    "extra_questions": [
+      "Was rät das Video zur Kommunikation in Beziehungen? Antworte auf Deutsch."
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=RX5iITVDxo8",
+    "label": "German, 11 minutes (new for this run)",
+    "extra_questions": [
+      "Summarize in English what the video explains about time dilation."
+    ]
+  }
+]
